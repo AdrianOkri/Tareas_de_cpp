@@ -1,5 +1,5 @@
 # Tareas_de_cpp_1
-Programas simple de programación con c++
+Programación simple con c++
 
 + Calificiones
 + Clima
