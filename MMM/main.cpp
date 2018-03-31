@@ -19,7 +19,7 @@ void Imprimir(string mensaje) {
 		cout << "[ " << valores[i] << " ] ";
 	}
 }
-// Nos devuelve 50 números al azar, que serán los valores para la Moda, Media y Mediana
+// Nos devuelve números al azar determinado por el lim, que serán los valores para la Moda, Media y Mediana
 void NumeroAzar() {
   srand(time(NULL)); // Generar la "semilla" de números aleatorios
   for(i = 0; i < lim; i++) {
@@ -31,11 +31,11 @@ void NumeroAzar() {
 // Ordenar números de mayor a menor
 void OrdenarNumeros() {
 	int aux;
-	
-	for (i = 0; i < lim; i++) {
-		for (j = i+1; j < lim; j++) {
-			if(valores[i] > valores[j]){
-				aux = valores[i];
+	// Ordenación de burbuja
+	for (i = 0; i < lim; i++) { // Funciona revisando cada elemento de la lista que va a ser ordenada con el siguiente:
+		for (j = i+1; j < lim; j++) { // intercambiándolos de posición si están en el orden equivocado
+			if(valores[i] > valores[j]){ // Es necesario revisar varias veces toda la lista hasta que no se necesiten más intercambios
+				aux = valores[i]; //  lo cual significa que la lista está ordenada
 				valores[i] = valores[j];
 				valores[j] = aux;
 			}
@@ -44,7 +44,7 @@ void OrdenarNumeros() {
 	Imprimir("Lista de números ordenados");
 }
 // *******************  Moda  *******************
-int Repetir(int n) {
+int Repetir(int n) { // La moda es el valor con mayor frecuencia en una distribución de datos
 	int x = 0;
 	for (j = 0; j < lim; j++) {
 		if(n == valores[j]) { // Cada que un valor se repita, la variable x incrementará en 1
@@ -74,9 +74,9 @@ void CalcularModa() {
 	
 }
 // *******************  Media  *******************
-void CalcularMedia() {
-	float media = 0;
-	for (i = 0; i < lim; i++) {
+void CalcularMedia() { //La media aritmética es el valor promedio de las muestras
+	float media = 0; //  y es independiente de las amplitudes de los intervalos.
+	for (i = 0; i < lim; i++) { // Se simboliza como y se encuentra sólo para variables cuantitativas
 		media += valores[i];
 	}
 	media /= lim;
@@ -84,7 +84,7 @@ void CalcularMedia() {
 	cout << "La media del arreglo es: " << media << endl;
 }
 // *******************  Mediana  *******************
-void CalcularMediana() {
+void CalcularMediana() { // La media es el valor de la variable que deja el mismo número de datos antes y después que él
 	if (lim % 2 == 0) { // Para un arreglo par
 		float n1 = valores[(lim / 2) - 1], n2 = valores [lim / 2];
 		float promedio = (n1 + n2) / 2;
